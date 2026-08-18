@@ -43,12 +43,7 @@ const Navbar = () => {
                         Women
                     </Link>
 
-                    <Link
-                        to="/men"
-                        className="transition duration-300 hover:text-[#8c6b4f]"
-                    >
-                        Men
-                    </Link>
+
 
                     <Link
                         to="/accessories"
