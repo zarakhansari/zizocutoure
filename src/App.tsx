@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 function App() {
   return (
@@ -6,7 +7,7 @@ function App() {
       <Navbar />
 
       <main>
-        <h1 className="text-4xl">Zizo Couture</h1>
+        <Hero />
       </main>
     </>
   );
