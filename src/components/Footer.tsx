@@ -85,14 +85,14 @@ const Footer = () => {
                                 Shipping & Delivery
                             </Link>
                         </li>
-
+                        <Link
+                            to="/faq"
+                            className="transition-colors hover:text-[#17233F]"
+                        >
+                            FAQ
+                        </Link>
                         <li>
-                            <Link
-                                to="/returns"
-                                className="transition-colors hover:text-[#17233F]"
-                            >
-                                Returns
-                            </Link>
+
                         </li>
 
                         <li>
@@ -132,12 +132,7 @@ const Footer = () => {
                         </li>
 
                         <li>
-                            <Link
-                                to="/faq"
-                                className="transition-colors hover:text-[#17233F]"
-                            >
-                                FAQ
-                            </Link>
+
                         </li>
 
                         <li>

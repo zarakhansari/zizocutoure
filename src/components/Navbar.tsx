@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import { useCart } from "../cartContext/CartContext";
 
 const Navbar = () => {
+    const { cartCount } = useCart();
     return (
         <header className="bg-[#faf9f5] text-[#17233f]">
 
@@ -36,21 +38,11 @@ const Navbar = () => {
                         New In
                     </Link>
 
-                    <Link
-                        to="/women"
-                        className="transition duration-300 hover:text-[#8c6b4f]"
-                    >
-                        Women
-                    </Link>
 
 
 
-                    <Link
-                        to="/accessories"
-                        className="transition duration-300 hover:text-[#8c6b4f]"
-                    >
-                        Accessories
-                    </Link>
+
+
 
                     <Link
                         to="/about"
@@ -106,10 +98,10 @@ const Navbar = () => {
                     </button>
 
                     {/* Cart */}
-                    <button
-                        type="button"
+                    <Link
+                        to="/cart"
                         aria-label="Shopping cart"
-                        className="relative transition duration-300 hover:text-[#8c6b4f]"
+                        className="relative transition-colors duration-300 hover:text-[#9A7653]"
                     >
                         <svg
                             className="h-5 w-5"
@@ -125,11 +117,10 @@ const Navbar = () => {
                             />
                         </svg>
 
-                        {/* Cart number */}
-                        <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#17233f] text-[9px] text-white">
-                            0
+                        <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#17233F] text-[9px] text-white">
+                            {cartCount}
                         </span>
-                    </button>
+                    </Link>
 
                 </div>
             </div>
