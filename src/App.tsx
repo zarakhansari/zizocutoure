@@ -10,6 +10,7 @@ import NewIn from "./pages/NewIn";
 import Women from "./pages/Women";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/women" element={<Women />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
 
       <Footer />
