@@ -11,6 +11,8 @@ import Women from "./pages/Women";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
       <Footer />
