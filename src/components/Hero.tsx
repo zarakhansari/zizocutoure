@@ -1,4 +1,23 @@
+import { useEffect, useState } from "react";
+
 const Hero = () => {
+    const images = [
+        "/images/model1.jpeg",
+        "/images/model2.jpeg",
+        "/images/model3.jpeg",
+        "/images/model4.jpeg",
+    ];
+
+    const [currentImage, setCurrentImage] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((prev) => (prev + 1) % images.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+
     return (
         <section className="bg-[#F8F6F0]">
             <div className="mx-auto grid min-h-[calc(100vh-120px)] max-w-7xl grid-cols-1 md:grid-cols-2">
@@ -36,14 +55,16 @@ const Hero = () => {
 
                 {/* Image */}
                 <div className="relative min-h-[500px] overflow-hidden md:min-h-full">
+
                     <img
-                        src="/images/model1.jpg"
+                        src={images[currentImage]}
                         alt="Zizo Couture collection"
-                        className="h-full w-full object-cover object-center"
+                        className="h-full w-full object-cover object-center transition-all duration-1000 ease-in-out scale-105"
                     />
 
                     {/* Image overlay */}
                     <div className="absolute inset-0 bg-black/5" />
+
                 </div>
 
             </div>

@@ -36,7 +36,7 @@ const Footer = () => {
                                 to="/new-in"
                                 className="transition-colors hover:text-[#17233F]"
                             >
-                                New In
+                                New Collection
                             </Link>
                         </li>
 

@@ -65,7 +65,7 @@ const NewIn = () => {
                 </p>
 
                 <h1 className="mt-3 font-serif text-4xl text-[#17233F] sm:text-5xl md:text-6xl">
-                    New In
+                    New Collection
                 </h1>
 
                 <p className="mx-auto mt-4 max-w-xl text-xs leading-6 text-gray-500 sm:text-sm sm:leading-7">
@@ -191,8 +191,8 @@ const NewIn = () => {
                                                             )
                                                         }
                                                         className={`min-w-[42px] border px-3 py-2.5 text-[10px] transition sm:min-w-[46px] sm:px-4 ${selectedSize === size
-                                                                ? "border-[#17233F] bg-[#17233F] text-white"
-                                                                : "border-[#D9D5CC] bg-white text-[#17233F] hover:border-[#17233F]"
+                                                            ? "border-[#17233F] bg-[#17233F] text-white"
+                                                            : "border-[#D9D5CC] bg-white text-[#17233F] hover:border-[#17233F]"
                                                             }`}
                                                     >
                                                         {size}

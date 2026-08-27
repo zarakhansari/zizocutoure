@@ -45,7 +45,7 @@ const Navbar = () => {
                         to="/new-in"
                         className="text-xs uppercase tracking-[0.2em] text-[#17233F] transition hover:text-[#9A7653]"
                     >
-                        New In
+                        New Collection
                     </Link>
 
                     <Link
@@ -221,7 +221,7 @@ const Navbar = () => {
                             onClick={closeMenu}
                             className="border-b border-[#D9D5CC] py-5 font-serif text-2xl text-[#17233F]"
                         >
-                            New In
+                            New Collection
                         </Link>
 
                         <Link

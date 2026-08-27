@@ -139,7 +139,7 @@ const Checkout = () => {
                         to="/new-in"
                         className="mt-8 inline-block bg-[#17233F] px-8 py-4 text-xs uppercase tracking-[0.2em] text-white transition hover:bg-[#9A7653]"
                     >
-                        Shop New In
+                        Shop New Collection
                     </Link>
 
                 </div>
@@ -198,8 +198,8 @@ const Checkout = () => {
                                     onChange={handleChange}
                                     placeholder="you@example.com"
                                     className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.email
-                                            ? "border-red-400"
-                                            : "border-[#D9D5CC] focus:border-[#17233F]"
+                                        ? "border-red-400"
+                                        : "border-[#D9D5CC] focus:border-[#17233F]"
                                         }`}
                                 />
 
@@ -243,8 +243,8 @@ const Checkout = () => {
                                         onChange={handleChange}
                                         placeholder="Your full name"
                                         className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.fullName
-                                                ? "border-red-400"
-                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            ? "border-red-400"
+                                            : "border-[#D9D5CC] focus:border-[#17233F]"
                                             }`}
                                     />
 
@@ -274,8 +274,8 @@ const Checkout = () => {
                                         onChange={handleChange}
                                         placeholder="Street and house number"
                                         className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.address
-                                                ? "border-red-400"
-                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            ? "border-red-400"
+                                            : "border-[#D9D5CC] focus:border-[#17233F]"
                                             }`}
                                     />
 
@@ -305,8 +305,8 @@ const Checkout = () => {
                                         onChange={handleChange}
                                         placeholder="City"
                                         className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.city
-                                                ? "border-red-400"
-                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            ? "border-red-400"
+                                            : "border-[#D9D5CC] focus:border-[#17233F]"
                                             }`}
                                     />
 
@@ -336,8 +336,8 @@ const Checkout = () => {
                                         onChange={handleChange}
                                         placeholder="Postal code"
                                         className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.postalCode
-                                                ? "border-red-400"
-                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            ? "border-red-400"
+                                            : "border-[#D9D5CC] focus:border-[#17233F]"
                                             }`}
                                     />
 
@@ -365,8 +365,8 @@ const Checkout = () => {
                                         value={formData.country}
                                         onChange={handleChange}
                                         className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.country
-                                                ? "border-red-400"
-                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            ? "border-red-400"
+                                            : "border-[#D9D5CC] focus:border-[#17233F]"
                                             }`}
                                     >
 
