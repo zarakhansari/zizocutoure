@@ -12,7 +12,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 border-b border-[#D9D5CC] bg-[#F8F6F0]/95 backdrop-blur">
+        <header className="sticky top-0 z-50 border-b border-[#D9D5CC] bg-[#F8F6F0]/95">
 
             <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
@@ -169,7 +169,7 @@ const Navbar = () => {
             {/* ========================= */}
 
             {isMenuOpen && (
-                <div className="fixed inset-0 z-50 bg-[#F8F6F0] md:hidden">
+                <div className="fixed inset-0 z-[999] bg-[#F8F6F0] md:hidden">
 
                     {/* Mobile Menu Header */}
                     <div className="flex h-20 items-center justify-between border-b border-[#D9D5CC] px-6">
