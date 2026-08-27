@@ -13,6 +13,8 @@ import Privacy from "./pages/Privacy";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import Contact from "./pages/Contact";
+
 
 
 
@@ -32,6 +34,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
       <Footer />

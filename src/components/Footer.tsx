@@ -41,22 +41,12 @@ const Footer = () => {
                         </li>
 
                         <li>
-                            <Link
-                                to="/women"
-                                className="transition-colors hover:text-[#17233F]"
-                            >
-                                Women
-                            </Link>
+
                         </li>
 
                         <li>
 
-                            <Link
-                                to="/accessories"
-                                className="transition-colors hover:text-[#17233F]"
-                            >
-                                Accessories
-                            </Link>
+
                         </li>
                     </ul>
                 </div>
@@ -78,12 +68,12 @@ const Footer = () => {
                         </li>
 
                         <li>
-                            <Link
+                            {/* <Link
                                 to="/shipping"
                                 className="transition-colors hover:text-[#17233F]"
                             >
                                 Shipping & Delivery
-                            </Link>
+                            </Link> */}
                         </li>
                         <Link
                             to="/faq"
@@ -123,12 +113,12 @@ const Footer = () => {
                         </li>
 
                         <li>
-                            <Link
+                            {/* <Link
                                 to="/journal"
                                 className="transition-colors hover:text-[#17233F]"
                             >
                                 Zizo Journal
-                            </Link>
+                            </Link> */}
                         </li>
 
                         <li>

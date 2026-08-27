@@ -55,7 +55,7 @@ export const products: Product[] = [
 
     {
         id: 5,
-        name: "Zizo Denim Cap",
+        name: "Denim Cap",
         price: 39,
         image: "/images/Cap.jpeg",
         category: "Accessories",
