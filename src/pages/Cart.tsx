@@ -177,7 +177,52 @@ const Cart = () => {
                             </Link>
 
                         </div>
+                        {/* Free Shipping Progress */}
+                        <div className="mb-8 bg-white p-6 md:p-7">
+                            {cartTotal >= 150 ? (
+                                <>
+                                    <div className="flex items-center gap-2">
+                                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#17233F] text-xs text-white">
+                                            ✓
+                                        </span>
 
+                                        <p className="text-xs uppercase tracking-[0.15em] text-[#17233F]">
+                                            You've unlocked free shipping
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-4 h-1 w-full bg-[#E5E1D9]">
+                                        <div className="h-full w-full bg-[#17233F]" />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <p className="text-xs leading-5 text-[#17233F]">
+                                        You're{" "}
+                                        <span className="font-medium">
+                                            €{(150 - cartTotal).toFixed(2)}
+                                        </span>{" "}
+                                        away from free shipping.
+                                    </p>
+
+                                    <div className="mt-4 h-1 w-full bg-[#E5E1D9]">
+                                        <div
+                                            className="h-full bg-[#17233F] transition-all duration-500"
+                                            style={{
+                                                width: `${Math.min(
+                                                    (cartTotal / 150) * 100,
+                                                    100
+                                                )}%`,
+                                            }}
+                                        />
+                                    </div>
+
+                                    <p className="mt-3 text-[10px] uppercase tracking-wider text-gray-400">
+                                        Free shipping on orders over €150
+                                    </p>
+                                </>
+                            )}
+                        </div>
                         {/* Order Summary */}
                         <aside className="h-fit bg-white p-7 md:p-8">
 
