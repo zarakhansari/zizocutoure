@@ -1,48 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../cartContext/CartContext";
+import { products } from "../data/products";
 
-const products = [
-    {
-        id: 1,
-        name: "Embroidered Denim Jacket",
-        price: 129,
-        image: "/images/jacket.jpeg",
-        category: "Jackets",
-        sizes: ["XS", "S", "M", "L", "XL"],
-    },
-    {
-        id: 2,
-        name: "Floral Embroidered Skirt",
-        price: 89,
-        image: "/images/skirt.jpeg",
-        category: "Skirts",
-        sizes: ["XS", "S", "M", "L", "XL"],
-    },
-    {
-        id: 3,
-        name: "Wide Leg Trousers",
-        price: 95,
-        image: "/images/trousers.jpeg",
-        category: "Trousers",
-        sizes: ["XS", "S", "M", "L", "XL"],
-    },
-    {
-        id: 4,
-        name: "Embroidered T-Shirt",
-        price: 59,
-        image: "/images/Tshirt.jpeg",
-        category: "T-Shirts",
-        sizes: ["XS", "S", "M", "L", "XL"],
-    },
-    {
-        id: 5,
-        name: "Zizo Denim Cap",
-        price: 39,
-        image: "/images/Cap.jpeg",
-        category: "Accessories",
-        sizes: ["One Size"],
-    },
-];
 
 const NewIn = () => {
     const { addToCart } = useCart();
