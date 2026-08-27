@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useCart } from "../cartContext/CartContext";
 
@@ -10,17 +11,113 @@ const Checkout = () => {
         clearCart,
     } = useCart();
 
+    // Form data
+    const [formData, setFormData] = useState({
+        email: "",
+        fullName: "",
+        address: "",
+        city: "",
+        postalCode: "",
+        country: "",
+    });
+
+    // Form errors
+    const [errors, setErrors] = useState({
+        email: "",
+        fullName: "",
+        address: "",
+        city: "",
+        postalCode: "",
+        country: "",
+    });
+
+    // Shipping
     const shipping =
         cartTotal >= 150 || cartTotal === 0 ? 0 : 9.99;
 
     const total = cartTotal + shipping;
 
+    // Handle input changes
+    const handleChange = (
+        event: React.ChangeEvent<
+            HTMLInputElement | HTMLSelectElement
+        >
+    ) => {
+        const { name, value } = event.target;
+
+        setFormData((current) => ({
+            ...current,
+            [name]: value,
+        }));
+
+        // Remove error when user starts correcting the field
+        setErrors((current) => ({
+            ...current,
+            [name]: "",
+        }));
+    };
+
+    // Place order
     const handlePlaceOrder = () => {
+        const newErrors = {
+            email: "",
+            fullName: "",
+            address: "",
+            city: "",
+            postalCode: "",
+            country: "",
+        };
+
+        // Email validation
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required.";
+        } else if (!formData.email.includes("@")) {
+            newErrors.email = "Please enter a valid email address.";
+        }
+
+        // Name validation
+        if (!formData.fullName.trim()) {
+            newErrors.fullName = "Full name is required.";
+        }
+
+        // Address validation
+        if (!formData.address.trim()) {
+            newErrors.address = "Address is required.";
+        }
+
+        // City validation
+        if (!formData.city.trim()) {
+            newErrors.city = "City is required.";
+        }
+
+        // Postal code validation
+        if (!formData.postalCode.trim()) {
+            newErrors.postalCode = "Postal code is required.";
+        }
+
+        // Country validation
+        if (!formData.country) {
+            newErrors.country = "Please select a country.";
+        }
+
+        setErrors(newErrors);
+
+        // Check if there are errors
+        const hasErrors = Object.values(newErrors).some(
+            (error) => error !== ""
+        );
+
+        if (hasErrors) {
+            return;
+        }
+
+        // Clear cart and go to confirmation
         clearCart();
+
         navigate("/order-confirmation");
     };
 
-    // If the cart is empty
+    // If cart is empty
     if (cartItems.length === 0) {
         return (
             <main className="flex min-h-[70vh] items-center justify-center bg-[#F8F6F0] px-6">
@@ -68,14 +165,18 @@ const Checkout = () => {
 
                 </div>
 
-                {/* Main Checkout Layout */}
+                {/* Main Layout */}
                 <div className="grid gap-12 lg:grid-cols-[1fr_400px]">
 
-                    {/* LEFT SIDE — FORM */}
+                    {/* ========================= */}
+                    {/* LEFT SIDE - CHECKOUT FORM */}
+                    {/* ========================= */}
+
                     <section className="bg-white p-6 md:p-10">
 
                         {/* Contact Information */}
                         <div>
+
                             <h2 className="font-serif text-2xl text-[#17233F]">
                                 Contact Information
                             </h2>
@@ -91,15 +192,31 @@ const Checkout = () => {
 
                                 <input
                                     id="email"
+                                    name="email"
                                     type="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     placeholder="you@example.com"
-                                    className="mt-2 w-full border border-[#D9D5CC] bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition focus:border-[#17233F]"
+                                    className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.email
+                                            ? "border-red-400"
+                                            : "border-[#D9D5CC] focus:border-[#17233F]"
+                                        }`}
                                 />
 
+                                {errors.email && (
+                                    <p className="mt-2 text-xs text-red-600">
+                                        {errors.email}
+                                    </p>
+                                )}
+
                             </div>
+
                         </div>
 
-                        {/* Delivery Address */}
+                        {/* ========================= */}
+                        {/* DELIVERY ADDRESS */}
+                        {/* ========================= */}
+
                         <div className="mt-12">
 
                             <h2 className="font-serif text-2xl text-[#17233F]">
@@ -120,10 +237,22 @@ const Checkout = () => {
 
                                     <input
                                         id="fullName"
+                                        name="fullName"
                                         type="text"
+                                        value={formData.fullName}
+                                        onChange={handleChange}
                                         placeholder="Your full name"
-                                        className="mt-2 w-full border border-[#D9D5CC] bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition focus:border-[#17233F]"
+                                        className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.fullName
+                                                ? "border-red-400"
+                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            }`}
                                     />
+
+                                    {errors.fullName && (
+                                        <p className="mt-2 text-xs text-red-600">
+                                            {errors.fullName}
+                                        </p>
+                                    )}
 
                                 </div>
 
@@ -139,10 +268,22 @@ const Checkout = () => {
 
                                     <input
                                         id="address"
+                                        name="address"
                                         type="text"
+                                        value={formData.address}
+                                        onChange={handleChange}
                                         placeholder="Street and house number"
-                                        className="mt-2 w-full border border-[#D9D5CC] bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition focus:border-[#17233F]"
+                                        className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.address
+                                                ? "border-red-400"
+                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            }`}
                                     />
+
+                                    {errors.address && (
+                                        <p className="mt-2 text-xs text-red-600">
+                                            {errors.address}
+                                        </p>
+                                    )}
 
                                 </div>
 
@@ -158,10 +299,22 @@ const Checkout = () => {
 
                                     <input
                                         id="city"
+                                        name="city"
                                         type="text"
+                                        value={formData.city}
+                                        onChange={handleChange}
                                         placeholder="City"
-                                        className="mt-2 w-full border border-[#D9D5CC] bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition focus:border-[#17233F]"
+                                        className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.city
+                                                ? "border-red-400"
+                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            }`}
                                     />
+
+                                    {errors.city && (
+                                        <p className="mt-2 text-xs text-red-600">
+                                            {errors.city}
+                                        </p>
+                                    )}
 
                                 </div>
 
@@ -177,10 +330,22 @@ const Checkout = () => {
 
                                     <input
                                         id="postalCode"
+                                        name="postalCode"
                                         type="text"
+                                        value={formData.postalCode}
+                                        onChange={handleChange}
                                         placeholder="Postal code"
-                                        className="mt-2 w-full border border-[#D9D5CC] bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition focus:border-[#17233F]"
+                                        className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.postalCode
+                                                ? "border-red-400"
+                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            }`}
                                     />
+
+                                    {errors.postalCode && (
+                                        <p className="mt-2 text-xs text-red-600">
+                                            {errors.postalCode}
+                                        </p>
+                                    )}
 
                                 </div>
 
@@ -196,8 +361,13 @@ const Checkout = () => {
 
                                     <select
                                         id="country"
-                                        defaultValue=""
-                                        className="mt-2 w-full border border-[#D9D5CC] bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition focus:border-[#17233F]"
+                                        name="country"
+                                        value={formData.country}
+                                        onChange={handleChange}
+                                        className={`mt-2 w-full border bg-[#F8F6F0] px-4 py-3 text-sm outline-none transition ${errors.country
+                                                ? "border-red-400"
+                                                : "border-[#D9D5CC] focus:border-[#17233F]"
+                                            }`}
                                     >
 
                                         <option value="" disabled>
@@ -226,13 +396,22 @@ const Checkout = () => {
 
                                     </select>
 
+                                    {errors.country && (
+                                        <p className="mt-2 text-xs text-red-600">
+                                            {errors.country}
+                                        </p>
+                                    )}
+
                                 </div>
 
                             </div>
 
                         </div>
 
-                        {/* Payment */}
+                        {/* ========================= */}
+                        {/* PAYMENT */}
+                        {/* ========================= */}
+
                         <div className="mt-12">
 
                             <h2 className="font-serif text-2xl text-[#17233F]">
@@ -280,7 +459,10 @@ const Checkout = () => {
 
                         </div>
 
-                        {/* Place Order */}
+                        {/* ========================= */}
+                        {/* PLACE ORDER */}
+                        {/* ========================= */}
+
                         <button
                             type="button"
                             onClick={handlePlaceOrder}
@@ -291,7 +473,10 @@ const Checkout = () => {
 
                     </section>
 
-                    {/* RIGHT SIDE — ORDER SUMMARY */}
+                    {/* ========================= */}
+                    {/* RIGHT SIDE - ORDER SUMMARY */}
+                    {/* ========================= */}
+
                     <aside className="h-fit bg-white p-7 md:p-8">
 
                         <h2 className="font-serif text-2xl text-[#17233F]">
@@ -308,7 +493,7 @@ const Checkout = () => {
                                     className="flex gap-4 py-5 first:pt-0"
                                 >
 
-                                    {/* Product Image */}
+                                    {/* Image */}
                                     <div className="h-20 w-16 shrink-0 overflow-hidden bg-[#F8F6F0]">
 
                                         <img
@@ -319,7 +504,7 @@ const Checkout = () => {
 
                                     </div>
 
-                                    {/* Product Info */}
+                                    {/* Product Information */}
                                     <div className="flex-1">
 
                                         <h3 className="font-serif text-base text-[#17233F]">
@@ -332,10 +517,9 @@ const Checkout = () => {
 
                                     </div>
 
-                                    {/* Item Price */}
+                                    {/* Item Total */}
                                     <p className="text-sm text-[#17233F]">
-                                        €
-                                        {(item.price * item.quantity).toFixed(2)}
+                                        €{(item.price * item.quantity).toFixed(2)}
                                     </p>
 
                                 </div>
