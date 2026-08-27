@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Privacy from "./pages/Privacy";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import OrderConfirmation from "./pages/OrderConfirmation";
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Routes>
 
       <Footer />
