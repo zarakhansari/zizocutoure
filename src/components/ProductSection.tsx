@@ -1,37 +1,10 @@
 import { Link } from "react-router";
+import { useCart } from "../cartContext/CartContext";
+import { products } from "../data/products";
 
-const products = [
-    {
-        id: 1,
-        name: "Embroidered Denim Jacket",
-        price: "€129",
-        image: "/images/jacket.jpeg",
-        category: "Jackets",
-    },
-    {
-        id: 2,
-        name: "Floral Embroidered Skirt",
-        price: "€89",
-        image: "/images/skirt.jpeg",
-        category: "Skirts",
-    },
-    {
-        id: 3,
-        name: "Wide Leg Trousers",
-        price: "€95",
-        image: "/images/trousers.jpeg",
-        category: "Trousers",
-    },
-    {
-        id: 4,
-        name: "Classic Embroidered T-Shirt",
-        price: "€59",
-        image: "/images/Tshirt.jpeg",
-        category: "T-Shirts",
-    },
-];
 
 const ProductSection = () => {
+    const { addToCart } = useCart();
     return (
         <section className="bg-[#F8F6F0] px-6 py-20 md:py-28">
             <div className="mx-auto max-w-7xl">
@@ -65,42 +38,56 @@ const ProductSection = () => {
                         <article key={product.id} className="group">
 
                             {/* Product Image */}
-                            <Link to={`/product/${product.id}`}>
-                                <div className="relative aspect-[3/4] overflow-hidden bg-white">
+                            <div className="relative aspect-[3/4] overflow-hidden bg-white">
 
+                                {/* Product Image */}
+                                <Link to={`/product/${product.id}`}>
                                     <img
                                         src={product.image}
                                         alt={product.name}
                                         className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                                     />
 
-                                    {/* New badge */}
+                                    {/* New Badge */}
                                     <span className="absolute left-4 top-4 bg-white px-3 py-2 text-[10px] uppercase tracking-widest text-[#17233F]">
                                         New
                                     </span>
+                                </Link>
 
-                                    {/* Wishlist */}
+                                {/* Wishlist */}
+                                <button
+                                    type="button"
+                                    aria-label={`Add ${product.name} to wishlist`}
+                                    className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#17233F] transition hover:text-[#9A7653]"
+                                >
+                                    ♡
+                                </button>
+
+                                {/* Quick Add */}
+                                <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-[#17233F] transition duration-300 group-hover:translate-y-0">
+
                                     <button
                                         type="button"
-                                        aria-label={`Add ${product.name} to wishlist`}
-                                        onClick={(event) => event.preventDefault()}
-                                        className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#17233F] transition hover:text-[#9A7653]"
+                                        onClick={() => {
+                                            addToCart({
+                                                id: product.id,
+                                                name: product.name,
+                                                price: Number(
+                                                    product.price.replace("€", "")
+                                                ),
+                                                image: product.image,
+                                                size: "M",
+                                                quantity: 1,
+                                            });
+                                        }}
+                                        className="w-full py-4 text-xs uppercase tracking-[0.2em] text-white transition hover:bg-[#9A7653]"
                                     >
-                                        ♡
+                                        Quick Add
                                     </button>
 
-                                    {/* Quick Add */}
-                                    <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-[#17233F] transition duration-300 group-hover:translate-y-0">
-                                        <button
-                                            type="button"
-                                            className="w-full py-4 text-xs uppercase tracking-[0.2em] text-white"
-                                        >
-                                            Quick Add
-                                        </button>
-                                    </div>
-
                                 </div>
-                            </Link>
+
+                            </div>
 
                             {/* Product Information */}
                             <div className="pt-5">
