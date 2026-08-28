@@ -92,9 +92,7 @@ const ProductSection = () => {
                                     </div>
 
                                     <p className="shrink-0 text-sm text-gray-600">
-                                        {typeof product.price === "number"
-                                            ? `€${product.price}`
-                                            : product.price}
+                                        €{product.price}
                                     </p>
 
                                 </div>
@@ -147,12 +145,7 @@ const ProductSection = () => {
                                         addToCart({
                                             id: product.id,
                                             name: product.name,
-                                            price:
-                                                typeof product.price === "number"
-                                                    ? product.price
-                                                    : Number(
-                                                        product.price.replace("€", "")
-                                                    ),
+                                            price: product.price,
                                             image: product.image,
                                             size: selectedSize,
                                             quantity: 1,
